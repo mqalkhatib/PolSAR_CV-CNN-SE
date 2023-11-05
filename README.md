@@ -1,6 +1,7 @@
 # PolSAR Image Classification Using Attention Based Shallow to Deep Convolutional Neural Network
 This is an implementation of "PolSAR Image Classification Using Attention Based Shallow to Deep Convolutional Neural Network" that was published in IEEE-IGARSS 2023
-![image](https://github.com/mqalkhatib/PolSAR_CV-CNN-SE/assets/49251659/81d2e7f3-ecd3-44a2-ac7a-c01f697a59be)
+![image](https://github.com/mqalkhatib/PolSAR_CV-CNN-SE/assets/49251659/2f26656f-1d0f-4a8e-847b-e8e694335ee1)
+
 
 # Dataset
 To validate this statement, the performance of the proposed network is evaluated on the Felovland PolSAR image. The scene was acquired by the NASA/JPL AirSAR system over the agricultural area in Netherlands with a size of 750x1024. The number of labeled samples is 207,832.
