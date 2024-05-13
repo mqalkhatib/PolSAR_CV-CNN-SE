@@ -60,37 +60,14 @@ each_acc, aa = AA_andEachClassAccuracy(confusion)
 
 
 ###############################################################################
-
-X, _, y = loadData(dataset)
-height = y.shape[0]
-width = y.shape[1]
-
-X_cmplx = padWithZeros(X, windowSize//2)
-
-# calculate the predicted image, this is a pixel wise operation, will take long time
-outputs = np.zeros((height,width))
-
-for i in range(height):
-    if i%5 == 0:
-        print("i = ", i)
-    for j in range(width):
-        target = int(y[i,j])        
-        if target == 0 :
-            continue
-        else :
-            image_patch_cmplx = Patch(X_cmplx,i,j, windowSize)
-            
-            image_patch_cmplx = image_patch_cmplx.reshape(1,image_patch_cmplx.shape[0],
-                                   image_patch_cmplx.shape[1], 
-                                   image_patch_cmplx.shape[2]) 
-            
-            
-                                
-            
-
-            prediction = Model.predict([image_patch_cmplx], verbose=0)
-            prediction = np.argmax(prediction, axis=1)
-            outputs[i][j] = prediction+1
+# Create the predicted class map
+X_coh, y = createImageCubes(coh_data, labels, windowSize, removeZeroLabels = False)
+Y_pred_test = Model.predict([X_coh])
+y_pred_test = (np.argmax(Y_pred_test, axis=1))
+Y_pred = np.reshape(y_pred_test, labels.shape) + 1
+gt_binary = np.copy(labels)
+gt_binary[labels>0]=1
+outputs = Y_pred*gt_binary
 
 sio.savemat('cmplx_shallow2deep_SE_' + dataset +'.mat', {'outputs': outputs})
 
