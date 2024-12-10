@@ -55,8 +55,10 @@ kappa = cohen_kappa_score(np.argmax(y_test, axis=1),  y_pred_test)
 oa = accuracy_score(np.argmax(y_test, axis=1), y_pred_test)
 confusion = confusion_matrix(np.argmax(y_test, axis=1), y_pred_test)
 each_acc, aa = AA_andEachClassAccuracy(confusion)
-    
-    
+
+print("Overall Accuracy =",  oa)
+print("Average Accuracy =", aa)
+print("Kappa =", kappa) 
 
 
 ###############################################################################
